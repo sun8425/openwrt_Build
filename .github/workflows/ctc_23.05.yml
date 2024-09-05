@@ -107,6 +107,11 @@ jobs:
         #cp -Rf feeds/smpackage/.github/diy/.packages/files/* files
         ./scripts/feeds update -a && ./scripts/feeds install -a
         cp -f feeds/smpackage/.github/diy/${{matrix.target}}.config .config && make defconfig
+
+    - name: ssh
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 300
+
         
     - name: Download package
       working-directory: ./openwrt
